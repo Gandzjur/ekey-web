@@ -1,3 +1,6 @@
 # ekey-web
-Just run
-$mvn spring-boot:start
+Innovation tournament project.
+## Run App
+```sh
+$ mvn spring-boot:start
+```
