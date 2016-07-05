@@ -1,14 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.gandzjur.ekey.domain;
 
-/**
- *
- * @author yaroslav
- */
-public class Check {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table(name = "CHECKS")
+@Entity
+public class Check implements Serializable {
+
+    @Id
+    private Integer checkId;
+
+    public Integer getCheckId() {
+        return checkId;
+    }
+
+    public void setCheckId(Integer checkId) {
+        this.checkId = checkId;
+    }
     
 }
