@@ -82,7 +82,7 @@ public class Student  implements Serializable {
 
     @Override
     public String toString() {
-        return "Student{" + "studentID=" + studentID + ", rfidTocken=" + rfidTocken + ", firstName=" + firstName + ", lastName=" + lastName + ", group=" + group + '}';
+        return "Student{" + "studentID=" + studentID + ", rfidTocken=" + rfidTocken + ", firstName=" + firstName + ", lastName=" + lastName + ", group=" + group.getGroupName() + '}';
     }
 
     

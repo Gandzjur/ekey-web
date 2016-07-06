@@ -57,7 +57,7 @@ public class Group implements Serializable {
 
     @Override
     public String toString() {
-        return "Group{" + "groupId=" + groupId + ", groupName=" + groupName + ", students=" + students.toString() + '}';
+        return "Group{" + "groupId=" + groupId + ", groupName=" + groupName + '}';
     }
 
 }
