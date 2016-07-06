@@ -141,7 +141,7 @@ public class Lecture implements Serializable {
                             ", lectureName=" + lectureName + 
                             ", interval=" + interval.getLectureIntervalId()+ 
                             ", room=" + room.getRoomId() + 
-                            ", teacher=" + teacher.getTeacherId() + 
+                            ", teacher=" + teacher.getTeacherName() + 
                             ", weekTwoness=" + weekTwoness + 
                             ", dayOfWeek=" + dayOfWeek + 
                             ", group=" + group.getGroupName() + 
