@@ -23,7 +23,7 @@ public class Univercity implements Serializable {
     private String univerName;
     
     @OneToMany(mappedBy = "university")
-    private List<Lection> lections;
+    private List<Lecture> lectures;
     
     @OneToMany(mappedBy = "university")
     private List<Room> rooms;
@@ -31,10 +31,10 @@ public class Univercity implements Serializable {
     public Univercity() {
     }
 
-    public Univercity(Integer univerId, String univerName, List<Lection> lections, List<Room> rooms) {
+    public Univercity(Integer univerId, String univerName, List<Lecture> lectures, List<Room> rooms) {
         this.univerId = univerId;
         this.univerName = univerName;
-        this.lections = lections;
+        this.lectures = lectures;
         this.rooms = rooms;
     }
 
@@ -54,12 +54,12 @@ public class Univercity implements Serializable {
         this.univerName = univerName;
     }
 
-    public List<Lection> getLections() {
-        return lections;
+    public List<Lecture> getLections() {
+        return lectures;
     }
 
-    public void setLections(List<Lection> lections) {
-        this.lections = lections;
+    public void setLections(List<Lecture> lectures) {
+        this.lectures = lectures;
     }
 
     public List<Room> getRooms() {
