@@ -139,7 +139,7 @@ public class Lecture implements Serializable {
     public String toString() {
         return "Lecture{" + "lectureId=" + lectureId + 
                             ", lectureName=" + lectureName + 
-                            ", interval=" + interval.getLectionIntervalId() + 
+                            ", interval=" + interval.getLectureIntervalId()+ 
                             ", room=" + room.getRoomId() + 
                             ", teacher=" + teacher.getTeacherId() + 
                             ", weekTwoness=" + weekTwoness + 
