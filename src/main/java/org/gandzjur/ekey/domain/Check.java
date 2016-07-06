@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import org.joda.time.DateTime;
 
 @Table(name = "CHECKS")
 @Entity
@@ -21,7 +20,7 @@ public class Check implements Serializable {
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "check_time", nullable = false, updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private DateTime checkTime;
+    private java.util.Calendar checkTime;
 
     @ManyToOne
     @JoinColumn(name = "room_id")
@@ -34,7 +33,7 @@ public class Check implements Serializable {
     public Check() {
     }
 
-    public Check(Integer checkId, DateTime checkTime, Room room, Student student) {
+    public Check(Integer checkId, java.util.Calendar checkTime, Room room, Student student) {
         this.checkId = checkId;
         this.checkTime = checkTime;
         this.room = room;
@@ -49,11 +48,11 @@ public class Check implements Serializable {
         this.checkId = checkId;
     }
 
-    public DateTime getCheckTime() {
+    public java.util.Calendar getCheckTime() {
         return checkTime;
     }
 
-    public void setCheckTime(DateTime checkTime) {
+    public void setCheckTime(java.util.Calendar checkTime) {
         this.checkTime = checkTime;
     }
 
