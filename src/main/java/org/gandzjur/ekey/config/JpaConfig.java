@@ -4,6 +4,7 @@ package org.gandzjur.ekey.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import java.util.Properties;
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 import org.hibernate.cfg.Environment;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,7 +48,7 @@ public class JpaConfig implements TransactionManagementConfigurer {
         return new HikariDataSource(config);
     }
 
-    @Bean
+    @Bean(name = {"entityManagerFactory"})
     public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(configureDataSource());
@@ -61,8 +62,13 @@ public class JpaConfig implements TransactionManagementConfigurer {
 
         return entityManagerFactoryBean;
     }
-
+    
     @Bean
+    public EntityManager entityManager() {
+        return configureEntityManagerFactory().getObject().createEntityManager();
+    }
+
+    @Bean(name = {"transactionManager"})
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         return new JpaTransactionManager();
     }
