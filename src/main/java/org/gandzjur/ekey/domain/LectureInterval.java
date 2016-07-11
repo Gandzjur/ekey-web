@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
 @Table(name = "LECTURE_INTERVALS")
 @Entity
@@ -26,9 +28,9 @@ public class LectureInterval implements Serializable {
     @JoinColumn(name = "univer_id")
     private University univercity;
     
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "start_time")
-    private java.util.Calendar start_time;
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+    private DateTime start_time;
     
     @Column(name = "lecture_interval")
     private Long lectureInterval;
@@ -36,7 +38,7 @@ public class LectureInterval implements Serializable {
     public LectureInterval() {
     }
 
-    public LectureInterval(Integer lectureIntervalId, University univercity, Calendar start_time, Long lectureInterval) {
+    public LectureInterval(Integer lectureIntervalId, University univercity, DateTime start_time, Long lectureInterval) {
         this.lectureIntervalId = lectureIntervalId;
         this.univercity = univercity;
         this.start_time = start_time;
@@ -59,11 +61,11 @@ public class LectureInterval implements Serializable {
         this.univercity = univercity;
     }
 
-    public Calendar getStart_time() {
+    public DateTime getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(Calendar start_time) {
+    public void setStart_time(DateTime start_time) {
         this.start_time = start_time;
     }
 
