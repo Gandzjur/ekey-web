@@ -24,7 +24,7 @@ public class LectureInterval implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "univer_id")
-    private Univercity univercity;
+    private University univercity;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "start_time")
@@ -36,7 +36,7 @@ public class LectureInterval implements Serializable {
     public LectureInterval() {
     }
 
-    public LectureInterval(Integer lectureIntervalId, Univercity univercity, Calendar start_time, Long lectureInterval) {
+    public LectureInterval(Integer lectureIntervalId, University univercity, Calendar start_time, Long lectureInterval) {
         this.lectureIntervalId = lectureIntervalId;
         this.univercity = univercity;
         this.start_time = start_time;
@@ -51,11 +51,11 @@ public class LectureInterval implements Serializable {
         this.lectureIntervalId = lectureIntervalId;
     }
 
-    public Univercity getUnivercity() {
+    public University getUnivercity() {
         return univercity;
     }
 
-    public void setUnivercity(Univercity univercity) {
+    public void setUnivercity(University univercity) {
         this.univercity = univercity;
     }
 

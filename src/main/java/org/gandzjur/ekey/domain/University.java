@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Table(name = "UNIVERSITIES")
 @Entity
-public class Univercity implements Serializable {
+public class University implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,10 +28,10 @@ public class Univercity implements Serializable {
     @OneToMany(mappedBy = "university")
     private List<Room> rooms;
 
-    public Univercity() {
+    public University() {
     }
 
-    public Univercity(Integer univerId, String univerName, List<Lecture> lectures, List<Room> rooms) {
+    public University(Integer univerId, String univerName, List<Lecture> lectures, List<Room> rooms) {
         this.univerId = univerId;
         this.univerName = univerName;
         this.lectures = lectures;

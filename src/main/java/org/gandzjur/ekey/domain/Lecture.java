@@ -46,12 +46,12 @@ public class Lecture implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "univer_id")
-    private Univercity university;
+    private University university;
 
     public Lecture() {
     }
 
-    public Lecture(Integer lectureId, String lectureName, LectureInterval interval, Room room, Teacher teacher, Integer weekTwoness, Integer dayOfWeek, Group group, Univercity university) {
+    public Lecture(Integer lectureId, String lectureName, LectureInterval interval, Room room, Teacher teacher, Integer weekTwoness, Integer dayOfWeek, Group group, University university) {
         this.lectureId = lectureId;
         this.lectureName = lectureName;
         this.interval = interval;
@@ -127,11 +127,11 @@ public class Lecture implements Serializable {
         this.group = group;
     }
 
-    public Univercity getUniversity() {
+    public University getUniversity() {
         return university;
     }
 
-    public void setUniversity(Univercity university) {
+    public void setUniversity(University university) {
         this.university = university;
     }
 

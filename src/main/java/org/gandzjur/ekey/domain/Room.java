@@ -23,12 +23,12 @@ public class Room implements Serializable {
     
     @ManyToOne
     @JoinColumn(name = "univer_id")
-    private Univercity university;
+    private University university;
 
     public Room() {
     }
 
-    public Room(Integer roomId, Long deviceMac, String roomName, Univercity university) {
+    public Room(Integer roomId, Long deviceMac, String roomName, University university) {
         this.roomId = roomId;
         this.deviceMac = deviceMac;
         this.roomName = roomName;
@@ -59,11 +59,11 @@ public class Room implements Serializable {
         this.roomName = roomName;
     }
 
-    public Univercity getUniversity() {
+    public University getUniversity() {
         return university;
     }
 
-    public void setUniversity(Univercity university) {
+    public void setUniversity(University university) {
         this.university = university;
     }
 
