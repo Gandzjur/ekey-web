@@ -15,7 +15,7 @@ public class StudentController {
     
     @Autowired
     private StudentRepository studentRepository;
-        
+/*        
     @RequestMapping("/students/auth")
     @ResponseBody
     public Student findStudentByRfid(@RequestParam(value = "rfidTocken") Integer rfidTocken) {
@@ -43,4 +43,5 @@ public class StudentController {
         }
         return "User succesfully created!";
     }
+*/
 }
