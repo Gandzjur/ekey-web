@@ -7,6 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface StudentRepository extends CrudRepository<Student, String> {
     
-    Student findByRfidTocken(Integer rfidTocken);
+    Student findByRfidToken(Integer rfidToken);
     
 }

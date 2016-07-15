@@ -16,8 +16,8 @@ public class Student  implements Serializable {
     @Column(name = "student_id", length = 10, nullable = false)
     private String studentID;
     
-    @Column(name = "rfid_tocken", nullable = false, unique = true)
-    private Integer rfidTocken;
+    @Column(name = "rfid_token", nullable = false, unique = true)
+    private Integer rfidToken;
     
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -34,7 +34,7 @@ public class Student  implements Serializable {
 
     public Student(String studentID, Integer rfidTocken, String firstName, String lastName, Group group) {
         this.studentID = studentID;
-        this.rfidTocken = rfidTocken;
+        this.rfidToken = rfidTocken;
         this.firstName = firstName;
         this.lastName = lastName;
         this.group = group;
@@ -48,12 +48,12 @@ public class Student  implements Serializable {
         this.studentID = studentID;
     }
 
-    public Integer getRfidTocken() {
-        return rfidTocken;
+    public Integer getRfidToken() {
+        return rfidToken;
     }
 
-    public void setRfidTocken(Integer rfidTocken) {
-        this.rfidTocken = rfidTocken;
+    public void setRfidToken(Integer rfidToken) {
+        this.rfidToken = rfidToken;
     }
 
     public String getFirstName() {
@@ -82,7 +82,7 @@ public class Student  implements Serializable {
 
     @Override
     public String toString() {
-        return "Student{" + "studentID=" + studentID + ", rfidTocken=" + rfidTocken + ", firstName=" + firstName + ", lastName=" + lastName + ", group=" + group.getGroupName() + '}';
+        return "Student{" + "studentID=" + studentID + ", rfidTocken=" + rfidToken + ", firstName=" + firstName + ", lastName=" + lastName + ", group=" + group.getGroupName() + '}';
     }
 
     
