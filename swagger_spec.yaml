@@ -1,23 +1,14 @@
-# Example YAML to get you started quickly.
-# Be aware that YAML has indentation based scoping.
-# Code completion support is available so start typing for available options.
 swagger: '2.0'
 
-# This is your document metadata
 info:
   version: "0.0.0"
   title: E-Key
 
-# Describe your paths here
 paths:
-  # This is a path endpoint. Change it.
   /check?fridToken={fridToken}&deiceMac={deiceMac}:
-    # This is a HTTP operation
     post:
-      # Describe this verb here. Note: you can use markdown
       description: |
         Checks the `Student` on lecture.
-      # This is array of GET operation parameters:
       parameters:
         - in: path
           name: fridToken
@@ -30,13 +21,9 @@ paths:
           description: Room identifier
           required: true
           type: string
-      # Expected responses for this operation:
       responses:
-        # Response code
         200:
           description: Successful response
-          # A schema describing your response object.
-          # Use JSON Schema format
           schema:
             $ref: '#/definitions/Check'
         400:
