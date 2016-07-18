@@ -1,0 +1,195 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.0.0"
+  title: E-Key
+
+# Describe your paths here
+paths:
+  # This is a path endpoint. Change it.
+  /check?fridToken={fridToken}&deiceMac={deiceMac}:
+    # This is a HTTP operation
+    post:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        Checks the `Student` on lecture.
+      # This is array of GET operation parameters:
+      parameters:
+        - in: path
+          name: fridToken
+          description: Student identifier
+          required: true
+          type: number
+          format: integer
+        - in: path
+          name: deiceMac
+          description: Room identifier
+          required: true
+          type: string
+      # Expected responses for this operation:
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            $ref: '#/definitions/Check'
+        400:
+          description: Wrong
+  /teacher/find?surname={surname}:
+    get:
+      description: |
+        Find all `Teacher`'s with **surname**.
+      parameters:
+        - in: path
+          name: surname
+          description: Teacher surname
+          required: true
+          type: string
+      responses:
+        200:
+          description: Success
+          schema:
+            type: array
+            items: 
+              $ref: '#/definitions/Teacher'
+  /lecture/now?group={group}:
+    get:
+      description: |
+        Find the current `Lecture`.
+      parameters:
+        - in: path
+          name: group
+          description: Group name
+          required: true
+          type: string
+      responses:
+        200:
+          description: Group have a lecture
+          schema:
+            $ref: '#/definitions/Lecture'
+        204:
+          description: Group doesn't have a lecture
+          schema: 
+            type: object
+        404:
+          description: Group not found
+definitions:
+  Student:
+    type: object
+    properties:
+      studentId:
+        type: string
+      rfidToken:
+        type: integer
+        format: int32
+      firstName:
+        type: string
+      lastName:
+        type: string
+  Check:
+    type: object
+    properties:
+      checkId:
+        type: integer
+        format: int32
+      checkTime:
+        type: string
+        format: date-time
+      room:
+        $ref: '#/definitions/Room'
+      student:
+        $ref: '#/definitions/Student'
+  Group:
+    type: object
+    properties:
+      groupId:
+        type: integer
+        format: int32
+      groupName:
+        type: string
+      students:
+        type: array
+        items:
+          $ref: '#/definitions/Student'
+  Lecture:
+    type: object
+    properties:
+      lectureId:
+        type: integer
+        format: int32
+      lectureName:
+        type: string
+      lectureInterval:
+        $ref: '#/definitions/LectureInterval'
+      room:
+        $ref: '#/definitions/Room'
+      teacher:
+        $ref: '#/definitions/Teacher'
+      weekTwoness:
+        type: integer
+        #FIX THIS
+        format: int32
+      dayOfWeek:
+        type: integer
+        format: int32
+      group:
+        $ref: '#/definitions/Group'
+  LectureInterval:
+    type: object
+    properties:
+      lectureIntervalId:
+        type: integer
+        format: int32
+      university:
+        $ref: '#/definitions/University'
+      startTime:
+        type: string
+        format: date-time
+      lectureInterval:
+        type: integer
+        format: int64
+  University:
+    type: object
+    properties:
+      univerId:
+        type: integer
+        format: int32
+      univerName:
+        type: string
+      lectures:
+        type: array
+        items:
+          $ref: '#/definitions/Lecture'
+      rooms:
+        type: array
+        items:
+          $ref: '#/definitions/Room'
+  Room:
+    type: object
+    properties: 
+      roomId:
+        type: integer
+        format: int32
+      deviceMac:
+        type: integer
+        format: int64
+      university:
+        $ref: '#/definitions/University'
+  Teacher:
+    type: object
+    properties:
+      teacherId:
+        type: integer
+        format: int32
+      teacherName:
+        type: string
+      teacherSurname:
+        type: string
+      teacherPatronymic:
+        type: string
