@@ -5,7 +5,7 @@ info:
   title: E-Key
 
 paths:
-  /check?fridToken={fridToken}&deiceMac={deiceMac}:
+  /checks?fridToken={fridToken}&deiceMac={deiceMac}:
     post:
       description: |
         Checks the `Student` on lecture.
@@ -28,7 +28,7 @@ paths:
             $ref: '#/definitions/Check'
         400:
           description: Wrong
-  /teacher/find?surname={surname}:
+  /teachers/find?surname={surname}:
     get:
       description: |
         Find all `Teacher`'s with **surname**.
@@ -45,7 +45,7 @@ paths:
             type: array
             items: 
               $ref: '#/definitions/Teacher'
-  /lecture/now?group={group}:
+  /lectures/now?group={group}:
     get:
       description: |
         Find the current `Lecture`.
@@ -62,10 +62,72 @@ paths:
             $ref: '#/definitions/Lecture'
         204:
           description: Group doesn't have a lecture
-          schema: 
-            type: object
         404:
           description: Group not found
+  /lectures/dayly?day={day}&group={group}:
+    get:
+      description: |
+        Returns `Lections` for **group** in **day**.
+      parameters:
+        - in: path
+          name: day
+          description: Day of week
+          required: true
+          type: integer
+          format: int16
+        - in: path
+          name: group
+          description: Group name
+          required: true
+          type: string
+      responses:
+        200:
+          description: Group have lectures
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Lecture'
+        204:
+          description: Group doesn't have lectures
+        404:
+          description: Group not found
+  /students/{rfidToken}:
+    get:
+      description: |
+        Returns `Student` data.
+      parameters:
+        - in: path
+          name: rfidToken
+          description: Student identyfier
+          required: true
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: Valid token
+          schema:
+            $ref: '#/definitions/Student'
+        404:
+          description: Invalid token
+  /students/{studentId}/checks:
+    get:
+      description: |
+        Returns `Check`'s
+      parameters:
+        - in: path
+          name: studentId
+          description: Student id
+          required: true
+          type: string
+      responses:
+        200:
+          description: Students checks
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Check'
+        404:
+          description: Student not found
 definitions:
   Student:
     type: object
